@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="favicon" href="./vite.svg" type="image/svg" />
+    <title>URL Shortner</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f4f6f8;
+        color: #333;
+        height: 100vh;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #4a90e2;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      a {
+        color: #4a90e2;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        background-color: #fff;
+        padding: 2.5rem;
+        border-radius: 34px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        font-size: 1rem;
+        color: #555;
+      }
+
+      input[type="text"] {
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 14px;
+        width: 100%;
+      }
+
+      button {
+        padding: 0.8rem;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #357ab8;
+        border: none;
+        border-radius: 24px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        font-size: 1.04rem;
+        cursor: pointer;
+        color: black;
+        background-color: #4a90e2;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2rem;
+      }
+
+      th,
+      td {
+        padding: 0.8rem;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f0f4f8;
+        color: #555;
+      }
+
+      tbody tr:hover {
+        background-color: #f9f9f9;
+      }
+
+      tbody a {
+        color: #4a90e2;
+        text-decoration: none;
+      }
+
+      tbody a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Make your Url Shorter and Better</h1>
+    <% if (locals.id) { %>
+    <p>
+      Genrated Url:<a href="http://localhost:3001/<%=id%>"
+        >http://localhost:3001/<%=id%></a
+      >
+    </p>
+    <% } %>
+    <div>
+      <form method="post" action="/url">
+        <label for="">Enter Your Url: </label>
+        <input type="text" name="url" placeholder="https://example.com" />
+        <button type="submit">Generate</button>
+      </form>
+    </div>
+    <!-- <div>
+      <% if (locals.urls) { %>
+      <table>
+        <thead>
+          <th>S. No.</th>
+          <th>ShortId</th>
+          <th>Url</th>
+          <th>Clicks Count</th>
+          <th>Shorter Url</th>
+        </thead>
+        <tbody>
+          <% urls.forEach((url,index) => { %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= url.shortId %></td>
+            <td><%= url.redirectUrl %></td>
+            <td><%= url.visitHistory.length %></td>
+            <td><a href="http://localhost:3001/<%=url.shortId%> ">Click</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div> -->
+  </body>
+</html>
